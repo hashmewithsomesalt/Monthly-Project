@@ -18,7 +18,15 @@ def scan_port(port):
         s.settimeout(1)
         result = s.connect_ex((target_ip, port))
         if result == 0:
-            print(f"[+] Port {port} is open")
+            print(f"Port {port} is open")
+            try: 
+                banner = s.recv(1024).decode().strip()
+                if banner:
+                    print(f"Banner: {banner}")
+                else:
+                    print("No banner received")
+            except:
+                print("Could not retrieve banner")
         s.close()
     except:
         pass
