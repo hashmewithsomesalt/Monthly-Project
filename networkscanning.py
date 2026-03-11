@@ -35,4 +35,3 @@ with ThreadPoolExecutor(max_workers=100) as executor:
         executor.submit(scan_port, port)
 end_time = time.time()
 print("-" * 40)
-print(f"\nScanning completed in {end_time - start_time:.2f} seconds")
